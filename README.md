@@ -1,0 +1,2 @@
+# CodeWhisper
+moonshot project
