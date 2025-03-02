@@ -1,0 +1,49 @@
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<h3>7. 面向对象（OOP） - 虚拟工厂</h3>
+<p><strong>比喻</strong>：类就像汽车设计图，对象是根据图纸生产的实际汽车 </p>
+<h4>类与对象</h4>
+<pre class="codehilite"><code class="language-python">class Car:  
+    # 类属性  
+    wheels = 4  
+
+    def __init__(self, brand, color):  
+        # 实例属性  
+        self.brand = brand  
+        self.color = color  
+
+    # 方法  
+    def info(self):  
+        print(f&quot;{self.color}色{self.brand}，{self.wheels}个轮子&quot;)  
+
+# 创建对象  
+my_car = Car(&quot;比亚迪&quot;, &quot;蓝&quot;)  
+my_car.info()  
+</code></pre>
+
+<h4>继承示例</h4>
+<pre class="codehilite"><code class="language-python">class ElectricCar(Car):  
+    def __init__(self, brand, color, battery):  
+        super().__init__(brand, color)  
+        self.battery = battery  
+
+    # 方法重写  
+    def info(self):  
+        print(f&quot;{self.color}色电动{self.brand}，续航{self.battery}km&quot;)  
+
+tesla = ElectricCar(&quot;特斯拉&quot;, &quot;黑&quot;, 500)  
+tesla.info()  
+</code></pre>
+
+<h4>常见错误</h4>
+<pre class="codehilite"><code class="language-python"># 错误1：忘记self参数  
+def info():  # 正确应为 def info(self):  
+    print(&quot;...&quot;)  
+
+# 错误2：混淆类属性和实例属性  
+Car.wheels = 3  # 影响所有实例  
+</code></pre>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三栏布局示例</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+        .left, .center, .right {
+            padding: 20px;
+        }
+        .left {
+            width: 30%;
+            background-color: #f0f0f0;
+            overflow-y: auto;
+        }
+        .center {
+            width: 40%;
+            background-color: #ffffff;
+        }
+        .right {
+            width: 30%;
+            background-color: #e0e0e0;
+        }
+        textarea {
+            width: 100%;
+            height: calc(100% - 60px);
+            padding: 10px;
+            box-sizing: border-box;
+            resize: none;
+        }
+        .button-container {
+            margin-top: 10px;
+        }
+        button {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="left">
+        <!-- 这里可以通过JavaScript加载Markdown文件并将其内容插入 -->
+        <div id="markdown-content">
+            <!-- 示例文本 -->
+            <h2>Markdown 内容</h2>
+            <p>这是从Markdown文件中加载的内容。</p>
+        </div>
+    </div>
+    <div class="center">
+        <textarea placeholder="在这里输入文本..."></textarea>
+    </div>
+    <div class="right">
+        <textarea placeholder="结果文本框..." readonly></textarea>
+        <div class="button-container">
+            <button>按钮1</button>
+            <button>按钮2</button>
+        </div>
+    </div>
+
+    <script>
+        // 这里可以通过JavaScript加载Markdown文件并将其内容插入到左侧面板中
+        // 示例：使用fetch API加载Markdown文件
+        fetch('yourMarkdownFile.md')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('markdown-content').innerHTML = marked(data);
+            })
+            .catch(error => console.error(error));
+    </script>
+</body>
+</html>

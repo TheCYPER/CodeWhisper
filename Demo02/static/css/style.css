@@ -1,0 +1,155 @@
+/* 顶部大纲固定定位 */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+/* 内容区避开顶部和底部 */
+.container {
+    margin: 150px 0 100px; /* 根据实际高度调整 */
+    display: flex;
+}
+
+/* 分页按钮样式 */
+.pagination {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #f5f5f5;
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.page-btn {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.page-btn.active {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* 目录页样式 */
+.course-catalog {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.course-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.course-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    text-decoration: none;
+    color: #333;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.course-number {
+    width: 40px;
+    height: 40px;
+    background: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.outline-preview {
+    list-style: none;
+    padding-left: 0;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.outline-preview li {
+    margin: 8px 0;
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+.outline-preview li::before {
+    content: "• ";
+    color: #007bff;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        margin: 200px 0 150px;
+    }
+    #editor, #ai-panel {
+        width: 95% !important;
+    }
+}
+
+/* Markdown内容渲染 */
+.markdown-content {
+    line-height: 1.8;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.markdown-content pre {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+.markdown-content code {
+    font-family: 'Fira Code', monospace;
+    background: #f3f3f3;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+/* 大纲导航 */
+.outline-nav {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eee;
+}
+
+.outline-nav a {
+    text-decoration: none;
+    color: #007bff;
+    padding: 8px 12px;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.outline-nav a:hover {
+    background: #e3f2fd;
+}

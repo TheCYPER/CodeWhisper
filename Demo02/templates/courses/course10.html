@@ -1,0 +1,49 @@
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<h3>10. 项目二：简易库存管理系统</h3>
+<p><strong>功能需求</strong>：<br/>
+    1. 商品信息存储（名称、价格、库存）<br/>
+    2. 入库/出库操作<br/>
+    3. 数据持久化保存 </p>
+<h4>类设计</h4>
+<pre class="codehilite"><code class="language-python">class Product:  
+    def __init__(self, name, price, stock):  
+        self.name = name  
+        self.price = price  
+        self.stock = stock  
+
+class Inventory:  
+    def __init__(self):  
+        self.products = []  
+
+    def add_product(self, product):  
+        self.products.append(product)  
+
+    def save_to_file(self, filename):  
+        with open(filename, 'w') as f:  
+            for p in self.products:  
+                f.write(f&quot;{p.name},{p.price},{p.stock}\n&quot;)  
+
+# 使用示例  
+inventory = Inventory()  
+inventory.add_product(Product(&quot;鼠标&quot;, 99.9, 50))  
+inventory.save_to_file(&quot;data.csv&quot;)  
+</code></pre>
+
+<h4>文件操作示例</h4>
+<pre class="codehilite"><code class="language-python"># 读取CSV文件  
+import csv  
+
+def load_inventory(filename):  
+    inventory = Inventory()  
+    with open(filename) as f:  
+        reader = csv.reader(f)  
+        for row in reader:  
+            name, price, stock = row  
+            inventory.add_product(Product(name, float(price), int(stock)))  
+    return inventory  
+</code></pre>

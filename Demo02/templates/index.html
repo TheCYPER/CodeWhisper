@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Python课程目录</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+     <style>
+        body {
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            background-image: url('https://ts1.cn.mm.bing.net/th/id/R-C.f1093b057a258958cecb7fd78639c463?rik=ndvT70qSam26sw&riu=http%3a%2f%2fpic.bizhi360.com%2fbbpic%2f68%2f10068.jpg&ehk=XkcK7rHV6J4IyddjqgjLe2Uwk4zfwLdC9Xb52Z4NvRw%3d&risl=&pid=ImgRaw&r=0');
+            background-size: cover;
+            background-position: center;
+            color: #FFFDFF;
+            font-family: 'Microsoft YaHei', 'SimSun', 'Helvetica', 'Arial', sans-serif;
+         #tab{
+            flex: 1;
+            background-color: rgba(45, 45, 45, 0.3);
+            backdrop-filter: blur(10px);
+        }
+     </style>
+</head>
+<body>
+
+
+
+
+<div id="tab">
+    <td align="right" valign="top">
+                <img src="/static/logo.png"  width="150" height="100">
+            </td>
+    <div class="course-catalog">
+        <h1>Python编程课程目录</h1>
+        <div class="course-list">
+            {% for page_id in COURSE_PAGES %}
+            <a href="{{ url_for('show_course', course_id=page_id) }}" class="course-card">
+                <div class="course-number">{{ page_id }}</div>
+                <h3>{{ COURSE_PAGES[page_id].title }}</h3>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

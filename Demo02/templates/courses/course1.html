@@ -1,0 +1,43 @@
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<h2>1. 输入输出</h2>
+<h3>程序与用户的对话</h3>
+<p><strong>生活比喻</strong>：像餐厅点餐，输入是顾客要求，输出是端上的菜品</p>
+<h3>基础语法</h3>
+
+<pre class="codehilite"><code class="language-python"># 获取用户输入
+name = input(&quot;请输入您的名字：&quot;)  # 返回字符串类型
+age = int(input(&quot;请输入年龄：&quot;))  # 转换为整数
+
+# 输出信息
+print(f&quot;欢迎{name}，您{age}岁了&quot;)  # f-string格式化（推荐）
+print(&quot;1+1=&quot;, 1+1)                # 自动添加空格
+print(&quot;Hello&quot; + &quot;World&quot;)           # 字符串拼接
+</code></pre>
+
+<h3>常见错误表</h3>
+<table>
+    <thead>
+    <tr>
+        <th>错误代码</th>
+        <th>问题说明</th>
+        <th>修正方法</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><code>print("价格：" + 19.99)</code></td>
+        <td>类型不匹配</td>
+        <td>使用,分隔或转换类型</td>
+    </tr>
+    <tr>
+        <td><code>num = input("数字：") * 2</code></td>
+        <td>字符串重复</td>
+        <td>添加<code>int()</code>转换</td>
+    </tr>
+    </tbody>
+</table>

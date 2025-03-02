@@ -1,0 +1,49 @@
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<h3>5. 循环（Loop） - 自动重复机</h3>
+<p><strong>比喻</strong>：像传送带，自动重复处理同类物品</p>
+<h4>for循环</h4>
+<pre class="codehilite"><code class="language-python"># 遍历列表
+fruits = [&quot;苹果&quot;, &quot;香蕉&quot;, &quot;橘子&quot;]
+for fruit in fruits:
+    print(f&quot;今天吃{fruit}&quot;)
+
+# 使用range
+for i in range(3):     # 0,1,2
+    print(f&quot;第{i+1}次尝试&quot;)
+
+# 循环+条件组合
+numbers = [12, 35, 60]
+for num in numbers:
+    if num &gt; 50:
+        print(f&quot;{num} 超标&quot;)
+        break         # 提前终止
+</code></pre>
+
+<h4>while循环</h4>
+<pre class="codehilite"><code class="language-python"># 基础用法
+count = 0
+while count &lt; 5:
+    print(f&quot;倒计时：{5-count}&quot;)
+    count += 1  # 必须改变条件变量！
+
+# 避免无限循环
+password = &quot;&quot;
+while password != &quot;123456&quot;:  # 示例用简单密码
+    password = input(&quot;请输入密码：&quot;)
+</code></pre>
+
+<h4>常见错误</h4>
+<pre class="codehilite"><code class="language-python"># 错误：无限循环
+count = 0
+while count &lt; 5:
+    print(count)  # 忘记count +=1
+
+# 错误：错误缩进
+for i in range(3):
+print(i)  # 需要缩进！
+</code></pre>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/theme/dracula.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-image: url('https://ts1.cn.mm.bing.net/th/id/R-C.f1093b057a258958cecb7fd78639c463?rik=ndvT70qSam26sw&riu=http%3a%2f%2fpic.bizhi360.com%2fbbpic%2f68%2f10068.jpg&ehk=XkcK7rHV6J4IyddjqgjLe2Uwk4zfwLdC9Xb52Z4NvRw%3d&risl=&pid=ImgRaw&r=0');
+            background-size: cover;
+            background-position: center;
+            color: #FFFDFF;
+            font-family: 'Microsoft YaHei', 'SimSun', 'Helvetica', 'Arial', sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(45, 45, 45, 0.8);
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar img {
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        .navbar-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar button, .navbar form button {
+            background-color: #c88383;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-left: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .navbar button:hover, .navbar form button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        .content {
+            display: flex;
+            flex: 1;
+        }
+
+        #left, #right {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            background-color: rgba(45, 45, 45, 0.5);
+            backdrop-filter: blur(10px);
+            height: 100%;
+        }
+
+        #center {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(45, 45, 45, 0.9);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .text {
+            font-size: 48px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .CodeMirror {
+            height: 100%;
+            flex: 1;
+        }
+
+        .label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <img src="/static/logo.png" alt="Logo">
+    <div class="navbar-buttons">
+        <button onclick="location.href='/templates/index.html'">前往 Example</button>
+        <form method="POST" onsubmit="syncCode()">
+            <input type="hidden" name="code" id="code-input">
+            <button type="submit">AI提出思路</button>
+        </form>
+    </div>
+</div>
+
+<div class="content">
+    <div id="left">
+        <div id="course-container">
+            {% include course_content %}
+        </div>
+    </div>
+
+    <div id="center">
+        <div class="label">Editor</div>
+        <textarea id="editor">{{ code }}</textarea>
+    </div>
+
+    <div id="right">
+        <div class="label">AI助手反馈：</div>
+        <div id="right-content">
+            <h3></h3>
+            <p>{{ ai_response }}</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 初始化CodeMirror后添加这些代码
+    const codeInput = document.getElementById('code-input');
+
+    // 同步编辑器内容到隐藏输入框
+    function syncCode() {
+        codeInput.value = editor.getValue();
+    }
+
+    // 表单提交时自动同步
+    document.querySelector('form').addEventListener('submit', syncCode);
+
+    // 初始化时设置编辑器内容
+    editor.setValue(`{{ code | safe }}`);
+
+    editor.on('change', (cm) => {
+        document.getElementById('code-input').value = cm.getValue();
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/python/python.min.js"></script>
+<script>
+    // Initialize CodeMirror on the #editor textarea with Python mode and a dark theme
+    const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
+        lineNumbers: true,
+        mode: "python",
+        theme: "dracula"
+    });
+</script>
+</body>
+</html>

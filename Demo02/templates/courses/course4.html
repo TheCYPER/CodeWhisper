@@ -1,0 +1,35 @@
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<h3>4. 条件判断（If/Else） - 程序的红绿灯</h3>
+<p><strong>比喻</strong>：像交通信号灯，根据条件决定执行哪条路</p>
+<h4>基础结构</h4>
+<pre class="codehilite"><code class="language-python"># 温度判断
+temperature = 28
+
+if temperature &gt; 30:
+    print(&quot;开启空调&quot;)
+elif 25 &lt;= temperature &lt;= 30:  # 25到30度之间
+    print(&quot;开风扇&quot;)
+else:
+    print(&quot;自然通风&quot;)
+
+# 简化嵌套
+age = 18
+is_local = True
+if age &gt;= 18 and is_local:
+    print(&quot;允许参加&quot;)
+</code></pre>
+
+<h4>常见错误</h4>
+<pre class="codehilite"><code class="language-python"># 错误：遗漏冒号
+if temperature &gt; 30   # 缺少冒号！
+    print(&quot;太热了&quot;)
+
+# 错误：错误缩进
+if x &gt; 5:
+print(&quot;大于5&quot;)  # 需要缩进！
+</code></pre>

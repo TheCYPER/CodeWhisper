@@ -1,0 +1,45 @@
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<h3>6. 函数（Functions） - 代码工具箱</h3>
+<p><strong>比喻</strong>：函数就像厨房工具（比如榨汁机），输入原料 → 处理 → 输出成品 </p>
+<h4>基础语法</h4>
+<pre class="codehilite"><code class="language-python"># 定义计算圆面积的函数  
+def calculate_area(radius):  
+    &quot;&quot;&quot;计算圆面积&quot;&quot;&quot;  
+    pi = 3.14159  
+    return pi * radius ** 2  
+
+# 调用函数  
+print(f&quot;半径为3的圆面积：{calculate_area(3):.2f}&quot;)  
+</code></pre>
+
+<h4>参数类型演示</h4>
+<pre class="codehilite"><code class="language-python"># 默认参数  
+def greet(name, greeting=&quot;你好&quot;):  
+    print(f&quot;{greeting}, {name}!&quot;)  
+
+greet(&quot;小明&quot;)                  # 输出：你好, 小明!  
+greet(&quot;Alice&quot;, &quot;Hello&quot;)       # 输出：Hello, Alice!  
+
+# 可变参数  
+def sum_numbers(*nums):  
+    return sum(nums)  
+
+print(sum_numbers(1, 2, 3))  # 输出6  
+</code></pre>
+
+<h4>常见错误</h4>
+<pre class="codehilite"><code class="language-python"># 错误1：修改外部变量  
+count = 0  
+def increment():  
+    count += 1  # 报错！需使用global声明  
+
+# 错误2：缺少return语句  
+def add(a, b):  
+    result = a + b  # 没有return  
+print(add(2,3))     # 输出None  
+</code></pre>
